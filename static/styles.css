@@ -1,0 +1,43 @@
+.landing_page {
+  background-image: url("../static/case1.jpeg");
+  vertical-align:10%;
+  padding-top: 50%;
+  padding-bottom: 5%;
+  height: 200%;
+  width: 100%;
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+  /* background-position: center; */
+  /*background-attachment: fixed; */
+  overflow-x:hidden;
+
+  /* text */
+  text-align: center;
+  color: 	#e19977;
+  font-size: 500%;
+  /* font-family: 'Fira Sans', sans-serif; */
+  font-family:serif;
+}
+
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    input{
+        /* style pt formular */
+        color: #4bf2da;
+    }
+}
+
+.cerc{
+    align-items: center;
+    border-radius: 100%;
+    max-width: 200px;
+}
+
