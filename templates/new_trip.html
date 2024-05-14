@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="../static/styles.css" rel = "stylesheet"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:400,700&display=swap"/>
+</head>
+<body>
+
+<h1>
+    Let's plan your next trip!
+</h1>
+
+<div>
+    <form action="/generate_trip" method="post">
+        <input type="text" id="destination" name="destination" placeholder="Next Destination"/>
+    
+        <input placeholder="Start Date" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="start_date" />
+        <input type="text" id="nr_days" name="nr_days" placeholder="Number of days on holiday"/>
+
+        <div class="holiday_type">
+            <form>
+                <input type="checkbox" id="sea" name="sea" value="Sea">
+                <label for="sea">Sea</label><br>
+                
+                <input type="checkbox" id="mountain" name="mountain" value="Mountain">
+                <label for="mountain">Mountain</label><br>
+                
+                <input type="checkbox" id="sightseeing" name="sightseeing" value="Sightseeing">
+                <label for="sightseeing">Sightseeing</label><br>
+        </div>
+
+        <input type="text" id="activities" name="activities" placeholder="Activities"/>
+ 
+       
+        <input type="submit" value="All done"/>
+            
+        
+        
+
+    </form>
+
+</div>
+
+</body>
+</html>
