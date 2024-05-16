@@ -19,6 +19,7 @@
 form{
     background-color:#5ebdce;
     padding: 20px;
+    align-self: center;
     display:flex;
     flex-direction: column;
     position: relative;
@@ -88,6 +89,15 @@ form{
     color: #fff;
   }
 
+  .text-styled2 {
+    font-family:'Monaco';
+    font-size: 64px;
+    font-weight: normal; /* Specifică greutatea fontului (ex: bold, normal, etc.) */
+    font-style: normal; /* Specifică stilul fontului (ex: italic, normal) */
+    color: #fff;
+   margin-left: 32%;
+  }
+
 .text-styled {
     font-family:'Lucida', sans-serif;
     font-size: 16px;
@@ -111,4 +121,34 @@ form{
     border-width: 10px;
     margin-left: 47%;
     margin-top: 15px;
+  }
+
+  form2
+  {
+    background-color: #ffa500;
+    padding: 20px;
+    align-self: center;
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    input{
+        /* style pt formular */
+        color: #000000;
+        background-color: #ffffff; /* Background color of the box */
+        border: 2px solid #333; /* Border around the box */
+        padding: 10px; /* Padding inside the box */
+        margin: 2px; /* Margin around the box */
+        border-top-left-radius: 20px; ;
+        border-top-right-radius: 20px ;
+        border-bottom-left-radius: 20px  ;
+        border-bottom-right-radius: 20px;
+    }
+
+    border-radius: 20px;
+    /*margin-left: 70%;*/
+    /*margin-bottom: 35%;*/
+    margin-top: 5%;
+    margin-left:490px;
+    margin-right:490px;
+
   }
