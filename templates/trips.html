@@ -23,6 +23,45 @@
     <div class="holiday">
         <!-- python baza de date -->
         <div class="container_trips_history">
+
+            {%for trip in trips%}
+                <!-- {{trip.image}}
+                {{trip.id}} -->
+                <form action="/elements" method="post">
+                    <div class="trip">
+                        <img src="{{'../uploads/' + trip.image}}" class="cerc"/>
+                        <input type="hidden" name="trip_id" value="{{trip.id}}"/>
+                        <input type="submit" value="{{trip.destination}}" class="titlu_excursie"/>
+                    </div>
+                </form>
+            {%endfor%}
+
+
+
+
+
+
+            <!-- <a href="/elements">
+                <div class="trip">
+                    {% for file in files %}
+                        <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
+                     {% endfor %}
+                     <p class="titlu_excursie">nume</p>
+                    </div>
+                </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
             <a href="/elements">
                 <div class="trip">
                     <img src="../static/poza1.png" class="cerc"/>
@@ -43,17 +82,18 @@
                     <p class="titlu_excursie">nume</p>
                 </div>
             </a>
-        </div>
+        </div> -->
 
 
-
-        <a href="/new_trip">
+        
+     
+       
+    </div>
+       <a href="/new_trip">
             <button class="buton_trip">
                 New Trip
             </button>
         </a>
-       
-    </div>
 </div>
 
 </body>

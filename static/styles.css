@@ -16,7 +16,7 @@
 
 }
 
-form{
+.form{
     background-color:#5ebdce;
     padding: 20px;
     align-self: center;
@@ -123,7 +123,7 @@ form{
     margin-top: 15px;
   }
 
-  form2
+  .form2
   {
     background-color: #ffa500;
     padding: 20px;
