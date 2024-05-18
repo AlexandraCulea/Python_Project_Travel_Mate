@@ -10,26 +10,45 @@
 
 .container{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content:flex-start;
+    align-items:flex-start;
+    margin-right: 150px ;
+
 }
 
 form{
-    display: flex;
+    background-color:#5ebdce;
+    padding: 20px;
+    align-self: center;
+    display:flex;
     flex-direction: column;
+    position: relative;
     input{
         /* style pt formular */
-        color: #4bf2da;
+        color: #000000;
+        background-color: #ffffff; /* Background color of the box */
+        border: 2px solid #333; /* Border around the box */
+        padding: 10px; /* Padding inside the box */
+        margin: 2px; /* Margin around the box */
+        border-top-left-radius: 20px; ;
+        border-top-right-radius: 20px ;
+        border-bottom-left-radius: 20px  ;
+        border-bottom-right-radius: 20px;
     }
+
+    border-radius: 20px;
+    margin-left: 70%;
+    margin-top: 10%;
 }
 
 .cerc{
     align-items: center;
-    border-radius: 100%;
-    max-width: 200px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    border-color: #045e70;
+    max-width:250px;
+    max-height: 250px;
+    padding-bottom: 1px;
+    position:relative;
+   
 }
 
 .titlu_excursie{
@@ -42,7 +61,94 @@ form{
 }
 .trip{
     border-style: solid;/* groove;*/
-    border-color: rgb(174, 229, 226);
-    border-width: 10%;
+    border-color: rgb(15, 137, 131);
+    border-width: 10px;
+    background-color: rgb(187, 243, 240);
+   
+    
 }
 
+/* .dreptunghi{
+    align-items: flex;
+    /*border-radius: 100%;*/
+    /*padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 350px;
+    height: 350px;
+    margin-right: 30px;
+    margin-left: 200px;
+    margin-top: 50%;
+} */
+
+.text-styled0 {
+    font-family:'Monaco';
+    font-size: 32px;
+    font-weight: normal; /* Specifică greutatea fontului (ex: bold, normal, etc.) */
+    font-style: normal; /* Specifică stilul fontului (ex: italic, normal) */
+    color: #fff;
+  }
+
+  .text-styled2 {
+    font-family:'Monaco';
+    font-size: 64px;
+    font-weight: normal; /* Specifică greutatea fontului (ex: bold, normal, etc.) */
+    font-style: normal; /* Specifică stilul fontului (ex: italic, normal) */
+    color: #fff;
+   margin-left: 32%;
+  }
+
+.text-styled {
+    font-family:'Lucida', sans-serif;
+    font-size: 16px;
+    font-weight: normal; /* Specifică greutatea fontului (ex: bold, normal, etc.) */
+    font-style: italic; /* Specifică stilul fontului (ex: italic, normal) */
+    color: #fff;
+  }
+  
+  .body2{
+
+    background-image:url("/static/fundal2.png");
+    background-size: cover; 
+    background-position: center;
+
+  }
+
+  .buton_trip
+  {
+    background-color:rgb(187, 243, 240) ;
+    border-color: rgb(15, 137, 131);
+    border-width: 10px;
+    margin-left: 47%;
+    margin-top: 15px;
+  }
+
+  form2
+  {
+    background-color: #ffa500;
+    padding: 20px;
+    align-self: center;
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    input{
+        /* style pt formular */
+        color: #000000;
+        background-color: #ffffff; /* Background color of the box */
+        border: 2px solid #333; /* Border around the box */
+        padding: 10px; /* Padding inside the box */
+        margin: 2px; /* Margin around the box */
+        border-top-left-radius: 20px; ;
+        border-top-right-radius: 20px ;
+        border-bottom-left-radius: 20px  ;
+        border-bottom-right-radius: 20px;
+    }
+
+    border-radius: 20px;
+    /*margin-left: 70%;*/
+    /*margin-bottom: 35%;*/
+    margin-top: 5%;
+    margin-left:490px;
+    margin-right:490px;
+
+  }
