@@ -23,30 +23,25 @@
     <form2 action="/generate_trip" method="post">
         <input type="text" id="destination" name="destination" placeholder="Next Destination"/>
     
-        <input placeholder="Start Date" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="start_date" />
+        <input placeholder="Start Date" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="start_date" name="start_date" />
         <input type="text" id="nr_days" name="nr_days" placeholder="Number of days on holiday"/>
 
         <div class="holiday_type">
-            <input type="checkbox" id="sea" name="sea" value="Sea">
+            <input type="checkbox" id="sea" name="holiday_type" value="Sea">
             <label for="sea">Sea</label><br>
             
-            <input type="checkbox" id="mountain" name="mountain" value="Mountain">
+            <input type="checkbox" id="mountain" name="holiday_type" value="Mountain">
             <label for="mountain">Mountain</label><br>
             
-            <input type="checkbox" id="sightseeing" name="sightseeing" value="Sightseeing">
+            <input type="checkbox" id="sightseeing" name="holiday_type" value="Sightseeing">
             <label for="sightseeing">Sightseeing</label><br>
-            
         </div>
 
         <input type="text" id="activities" name="activities" placeholder="Activities"/>
  
        
         <input type="submit" value="All done"/>
-            
-        
-        
-
-    </form2>
+    </form>
 
 </div>
 

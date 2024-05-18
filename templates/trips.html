@@ -23,6 +23,35 @@
     <div class="holiday">
         <!-- python baza de date -->
         <div class="container_trips_history">
+
+
+
+
+
+
+
+
+            <a href="/elements">
+                <div class="trip">
+                    {% for file in files %}
+                        <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
+                     {% endfor %}
+                     <p class="titlu_excursie">nume</p>
+                    </div>
+                </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
             <a href="/elements">
                 <div class="trip">
                     <img src="../static/poza1.png" class="cerc"/>
