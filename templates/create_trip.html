@@ -1,0 +1,39 @@
+</html><!DOCTYPE html>
+<html>
+<head>
+  <link href="../static/styles.css" rel = "stylesheet"/>
+</head>
+<body>
+    <!-- <h1><strong><span id="destination" > {{destination}}</span></strong></h1>
+    <p>Nr days: <span id="nr_days" > {{nr_days}}</span></p>
+    <p>Starting date: <span id="start_date" > {{start_date}}</span></p>
+    <p>Holiday type: <span id="holiday_type" > {{holiday_type}}</span></p>
+    <p>Activities: <span id="activities" > {{activities}}</span></p> -->
+
+<!-- Generare text -->
+    <p>Documents and Money: </p> 
+    <pre>{{trip.documents}}</pre>
+    <p>Haine: </p>
+        <pre>{{result_clothing}}</pre>
+    <p>Personal Care and Health Products:</p>
+         <pre>{{result_care}}</pre>
+    <p>Electronics and Accessories: </p>
+        <pre>{{result_electronics}}</pre>
+
+    <p>Activity </p>
+        <pre>{{result_activity}}</pre>
+
+    <!-- <p>Weather: <span id="weather" > {{result_weather}}</span></p> -->
+
+
+
+    {% for file in files %}
+        {%if file == trip.image %}
+            <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
+        {%endif%}
+    {% endfor %}
+    
+
+</body>
+
+</html>

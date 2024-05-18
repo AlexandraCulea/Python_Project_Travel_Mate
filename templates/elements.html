@@ -14,9 +14,27 @@
 </head>
 <body>
   <h1 class="text-styled0">
-    Locatie
-  </h>
-<p>text</p>
+    {{trip.destination}}
+  </h1>
+  <p>Documents and Money: </p> 
+  <pre>{{trip.documents}}</pre>
+  <p>Haine: </p>
+      <pre>{{result_clothing}}</pre>
+  <p>Personal Care and Health Products:</p>
+       <pre>{{result_care}}</pre>
+  <p>Electronics and Accessories: </p>
+      <pre>{{result_electronics}}</pre>
+
+  <p>Activity </p>
+      <pre>{{result_activity}}</pre>
+
+
+      {% for file in files %}
+      {%if file == trip.image %}
+          <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
+      {%endif%}
+  {% endfor %}
+  
 
 </body>
 </html>

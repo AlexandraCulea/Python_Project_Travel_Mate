@@ -4,46 +4,48 @@
   <link href="../static/styles.css" rel = "stylesheet"/>
 </head>
 <body>
-    <h1><strong><span id="destination" > {{destination}}</span></strong></h1>
-    <p>Nr days: <span id="nr_days" > {{nr_days}}</span></p>
-    <p>Starting date: <span id="start_date" > {{start_date}}</span></p>
-    <p>Holiday type: <span id="holiday_type" > {{holiday_type}}</span></p>
-    <p>Activities: <span id="activities" > {{activities}}</span></p>
-
-    <!-- poza -->
-    <h1>File Upload</h1>
-    <form method="POST" action="" enctype="multipart/form-data">
-      <p><input type="file" name="file"></p>
-      <p><input type="submit" value="Submit"></p>
-    </form>
-    <hr>
-    {% for file in files %}
-      <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
-    {% endfor %}
-    
+    <!-- <h1><strong><span id="destination" > {{destination}}</span></strong></h1> -->
+    <h1><strong><span id="destination" > {{trip.destination}}</span></strong></h1>
+    <p>Nr days: <span id="nr_days" > {{trip.nr_days}}</span></p>
+    <p>Starting date: <span id="start_date" > {{trip.start_date}}</span></p>
+    <p>Holiday type: <span id="holiday_type" > {{trip.holiday_type}}</span></p>
+    <p>Activities: <span id="activities" > {{trip.activities}}</span></p>
 
 <!-- Generare text -->
     <p>Documents and Money: </p> 
-    <pre>{{result_documents}}</pre>
+    <pre>{{trip.documents}}</pre>
     <p>Haine: </p>
-        <pre>{{result_clothing}}</pre>
+        <pre>{{trip.clothes}}</pre>
     <p>Personal Care and Health Products:</p>
-         <pre>{{result_care}}</pre>
+         <pre>{{trip.care}}</pre>
     <p>Electronics and Accessories: </p>
-        <pre>{{result_electronics}}</pre>
+        <pre>{{trip.electronics}}</pre>
 
     <p>Activity </p>
-        <pre>{{result_activity}}</pre>
-
+        <pre>{{trip.activity}}</pre>
     <!-- <p>Weather: <span id="weather" > {{result_weather}}</span></p> -->
 
+    <!-- poza -->
+    <h1>File Upload</h1>
+    <form method="POST" action="/create_trip" enctype="multipart/form-data">
+        <input type="hidden" name="result_documents" value="{{result_documents}}"/>
+        <input type="hidden" name="trip_id" value="{{trip.id}}"/>
+
+      <p><input type="file" name="file"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+
+
+    <!-- {% for file in files %}
+      <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
+    {% endfor %} -->
+    
+<!-- 
     <a href="/trips">
         <div >
             <p class="titlu_excursie">All packed</p>
         </div>
-    </a>
-
-
+    </a> -->
 
 
 

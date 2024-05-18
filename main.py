@@ -1,10 +1,7 @@
-from flask import Flask, request, render_template, redirect, url_for
+# from flask import Flask, request, render_template, redirect, url_for
 import requests
 import json
 from datetime import datetime
-
-
-
 import imghdr
 import os
 from flask import Flask, render_template, request, redirect, url_for, abort, \
@@ -12,6 +9,15 @@ from flask import Flask, render_template, request, redirect, url_for, abort, \
 from werkzeug.utils import secure_filename
 
 
+
+
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from database import Trip, db
+
+
+
+# migrate=Migrate
 
 
 global_age=""
@@ -24,17 +30,39 @@ global_activities=""
 
 app = Flask(__name__, static_folder='static')
 
+
+
+
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+# migrate.init_app(app, db)
+
+with app.app_context():
+      #   from . import models, routes
+        db.create_all()
+
+
+
+
+
+
 @app.route('/')
 def index():
    return render_template('index.html')
 
 @app.route('/trips')
 def trips():
-   return render_template('trips.html')
+   trips = Trip.query.order_by(Trip.id.desc()).all()
+   return render_template('trips.html', trips = trips)
 
-@app.route('/elements')
+@app.route('/elements', methods=['POST', 'GET'])
 def elements():
-   return render_template('elements.html')
+   trip = Trip.query.filter_by(id=int(request.form["trip_id"])).first()
+   files = os.listdir(app.config['UPLOAD_PATH'])
+   return render_template('elements.html', trip=trip, files=files)
 
 @app.route('/new_trip')
 def new_trip():
@@ -54,6 +82,12 @@ def generate_trip():
    global global_nrDays
    global global_type
    global global_activities
+   generated_documents="nu s-a putut genera, pls refresh"
+   generated_clothing="nu s-a putut genera, pls refresh"
+   generated_care="nu s-a putut genera, pls refresh"
+   generated_electronics="nu s-a putut genera, pls refresh"
+   generated_activity="nu s-a putut genera, pls refresh"
+
 
    global_dest = request.form['destination']
    global_startDate = request.form['start_date']
@@ -142,26 +176,39 @@ def generate_trip():
    # response_weather = requests.post(url, json=payload, headers=headers)
    # result_weather = json.loads(response_weather.text)
 
+
+   new_trip=Trip(destination=global_dest,
+                  nr_days=global_nrDays,
+                  start_date=global_startDate,
+                  holiday_type=''.join(global_activities),
+                  activity_type=global_activities,
+                  documents=generated_documents,
+                  clothes=generated_clothing,
+                  care=generated_care,
+                  electronics=generated_electronics,
+                  activity=generated_activity)
+   db.session.add(new_trip)
+   db.session.commit()
+   last_trip = Trip.query.order_by(Trip.id.desc()).first()
+
    return render_template('generate_trip.html', 
+                           trip=last_trip
                            #top
-                            destination=global_dest,
-                            start_date=global_startDate,
-                            nr_days=global_nrDays,
-                            holiday_type=holiday_type_str,
-                            activities=global_activities,
-                           # generate 
-                           #  result_weather=result_weather,
-                            result_clothing=generated_clothing,
-                            result_activity=generated_activity,
-                            result_documents=generated_documents,
-                            result_care=generated_care,
-                            result_electronics=generated_electronics
+                           #  destination=global_dest,
+                           #  start_date=global_startDate,
+                           #  nr_days=global_nrDays,
+                           #  holiday_type=holiday_type_str,
+                           #  activities=global_activities,
+                           # # generate 
+                           # #  result_weather=result_weather,
+                           #  result_clothing=generated_clothing,
+                           #  result_activity=generated_activity,
+                           #  result_documents=generated_documents,
+                           #  result_care=generated_care,
+                           #  result_electronics=generated_electronics
                             )
 
-
-
-
-
+# upload image for trip
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
 app.config['UPLOAD_PATH'] = 'uploads'
@@ -174,26 +221,39 @@ def validate_image(stream):
         return None
     return '.' + (format if format != 'jpeg' else 'jpg')
 
-@app.route('/generate_trip')
+@app.route('/create_trip', methods=['POST','GET'])
 def image():
-    files = os.listdir(app.config['UPLOAD_PATH'])
-    return render_template('generate_trip.html', files=files)
+   trip_id=request.form['trip_id']
+   trip=Trip.query.filter_by(id = int(trip_id)).first()
+   uploaded_file = request.files['file']
+   filename = secure_filename(uploaded_file.filename)
+   if filename == '':
+      return redirect(url_for('generate_trip'))
+   
+   file_ext = os.path.splitext(filename)[1]
+   if file_ext not in app.config['UPLOAD_EXTENSIONS'] or file_ext != validate_image(uploaded_file.stream):
+      abort(400)
 
-@app.route('/generate_trip', methods=['POST'])
-def upload_files():
-    uploaded_file = request.files['file']
-    filename = secure_filename(uploaded_file.filename)
-    if filename != '':
-        file_ext = os.path.splitext(filename)[1]
-        if file_ext not in app.config['UPLOAD_EXTENSIONS'] or \
-                file_ext != validate_image(uploaded_file.stream):
-            abort(400)
-        uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-    return redirect(url_for('generate_trip'))
+   uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+   files = os.listdir(app.config['UPLOAD_PATH'])
+
+   trip.image = filename
+   # db.session.merge(trip)
+   db.session.commit()
+
+
+   result_documents = request.form['result_documents']
+   # return render_template('create_trip.html', files=files, result_documents=result_documents,fileName = filename, trip=trip)
+   return redirect(url_for('trips'))
 
 @app.route('/uploads/<filename>')
 def upload(filename):
     return send_from_directory(app.config['UPLOAD_PATH'], filename)
+
+
+
+
+
 
 
 
