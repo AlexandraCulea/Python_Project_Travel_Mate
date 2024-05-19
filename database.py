@@ -16,4 +16,10 @@ class Trip(db.Model):
     care = db.Column(db.String(50), nullable=False)
     electronics = db.Column(db.String(50), nullable=False)
     activity = db.Column(db.String(50), nullable=False)
-    image = db.Column(db.String(50), nullable=False, default='Plaja.jpg')
+    image = db.Column(db.String(50), nullable=False, default='../static/Plaja.jpg')
+
+def delete_trip_by_id(trip_id):
+    trip = Trip.query.get(trip_id)
+    if trip:
+        db.session.delete(trip)
+        db.session.commit()

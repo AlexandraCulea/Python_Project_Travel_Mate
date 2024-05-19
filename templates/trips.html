@@ -27,6 +27,14 @@
             {%for trip in trips%}
                 <!-- {{trip.image}}
                 {{trip.id}} -->
+
+
+                <form action="/delete_trip" method="post" style="display: inline;">
+                    <input type="hidden" name="trip_id" value="{{ trip.id }}"/>
+                    <input type="submit" value="Remove" class="remove_button"/>
+                </form>
+
+
                 <form action="/elements" method="post">
                     <div class="trip">
                         <img src="{{'../uploads/' + trip.image}}" class="cerc"/>
@@ -34,55 +42,30 @@
                         <input type="submit" value="{{trip.destination}}" class="titlu_excursie"/>
                     </div>
                 </form>
+
+
             {%endfor%}
 
 
 
+            
 
 
 
-            <!-- <a href="/elements">
-                <div class="trip">
-                    {% for file in files %}
-                        <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
-                     {% endfor %}
-                     <p class="titlu_excursie">nume</p>
-                    </div>
-                </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <a href="/elements">
-                <div class="trip">
-                    <img src="../static/poza1.png" class="cerc"/>
-                    <p class="titlu_excursie">nume</p>
-                </div>
-            </a>
-
-            <a href="/elements">
-                <div class="trip">
-                    <img src="../static/beach.jpg" class="cerc"/>
-                    <p class="titlu_excursie">nume</p>
-                </div>
-            </a>
-
-            <a href="/elements">
-                <div class="trip">
-                    <img src="../static/barcelona-838716_1280.jpg" class="cerc"/>
-                    <p class="titlu_excursie">nume</p>
-                </div>
-            </a>
-        </div> -->
+            <script>
+                async function deleteTrip(tripId) {
+                    const response = await fetch(`/delete_trip/${tripId}`, {
+                        method: 'DELETE'
+                    });
+        
+                    const result = await response.json();
+                    if (response.status === 200) {
+                        document.getElementById(`trip-${tripId}`).remove();
+                    } else {
+                        alert(result.message);
+                    }
+                }
+            </script>
 
 
         
