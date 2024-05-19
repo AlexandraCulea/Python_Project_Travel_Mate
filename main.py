@@ -17,7 +17,7 @@ from database import Trip, db
 
 
 
-# migrate=Migrate
+from database import delete_trip_by_id
 
 
 global_age=""
@@ -58,6 +58,25 @@ def trips():
    trips = Trip.query.order_by(Trip.id.desc()).all()
    return render_template('trips.html', trips = trips)
 
+
+
+
+
+@app.route('/delete_trip', methods=['POST'])
+def delete_trip():
+    trip_id = request.form['trip_id']
+    delete_trip_by_id(trip_id)  # Implement this function to delete the trip from your database
+    return redirect(url_for('trips')) 
+
+
+
+
+
+
+
+
+
+
 @app.route('/elements', methods=['POST', 'GET'])
 def elements():
    trip = Trip.query.filter_by(id=int(request.form["trip_id"])).first()
@@ -82,11 +101,11 @@ def generate_trip():
    global global_nrDays
    global global_type
    global global_activities
-   generated_documents="nu s-a putut genera, pls refresh"
-   generated_clothing="nu s-a putut genera, pls refresh"
-   generated_care="nu s-a putut genera, pls refresh"
-   generated_electronics="nu s-a putut genera, pls refresh"
-   generated_activity="nu s-a putut genera, pls refresh"
+   generated_documents="Please refresh"
+   generated_clothing="Please refresh"
+   generated_care="Please refresh"
+   generated_electronics="Please refresh"
+   generated_activity="Please refresh"
 
 
    global_dest = request.form['destination']
@@ -228,7 +247,7 @@ def image():
    uploaded_file = request.files['file']
    filename = secure_filename(uploaded_file.filename)
    if filename == '':
-      return redirect(url_for('generate_trip'))
+      return redirect(url_for('trips'))
    
    file_ext = os.path.splitext(filename)[1]
    if file_ext not in app.config['UPLOAD_EXTENSIONS'] or file_ext != validate_image(uploaded_file.stream):
