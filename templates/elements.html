@@ -5,35 +5,67 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:400,700&display=swap"/>
   <style>
     body{
-  
-      background-image:url("/static/cer3.png");
-  
+      /*background-color: #BDF1DE;*/
+       background-image:url("/static/cer.png");
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size:cover;
+      
+      
     }
       
   </style>
 </head>
 <body>
-  <h1 class="text-styled0">
+  <h1 class="text-styled_elements0">
     {{trip.destination}}
   </h1>
-  <p>Documents and Money: </p> 
-  <pre>{{trip.documents}}</pre>
-  <p>Haine: </p>
-      <pre>{{trip.clothes}}</pre>
-  <p>Personal Care and Health Products:</p>
+  <!-- <p>Documents and Money: </p> 
+  <pre>{{trip.documents}}</pre> -->
+  <!-- <p>Haine: </p>
+      <pre>{{trip.clothes}}</pre> -->
+  <!-- <p>Personal Care and Health Products:</p>
        <pre>{{result_care}}</pre>
   <p>Electronics and Accessories: </p>
       <pre>{{result_electronics}}</pre>
 
   <p>Activity </p>
-      <pre>{{result_activity}}</pre>
+      <pre>{{result_activity}}</pre> -->
 
 
-      {% for file in files %}
+  
+        <!-- {% for file in files %}
       {%if file == trip.image %}
           <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
       {%endif%}
   {% endfor %}
+   -->
+    <!-- {{trip.destination}} -->
+  </h1>
+  <!-- <div class="form_elements"> -->
+    <p class="text-styled_elements11">Documents and Money: </p> 
+    <pre class="text-styled_elements1">{{trip.documents}}</pre>
+  <!-- </div> -->
+  <!-- <div class="form_elements"> -->
+    <p class="text-styled_elements11">Clothes: </p>
+      <pre class="text-styled_elements1">{{trip.clothes}}</pre>
+  <!-- </div> -->
+  
+  <p class="text-styled_elements11">Personal Care and Health Products:</p>
+       <pre class="text-styled_elements1">{{trip.care}}</pre>
+  <p class="text-styled_elements1">Electronics and Accessories: </p>
+      <pre class="text-styled_elements1">{{trip.electronics}}</pre>
+
+  <p class="text-styled_elements11">Activity </p>
+      <pre class="text-styled_elements1">{{trip.activity}}</pre>
+
+
+       {% for file in files %}
+      {%if file == trip.image %}
+          <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
+      {%endif%}
+  {% endfor %} 
   
 
 </body>

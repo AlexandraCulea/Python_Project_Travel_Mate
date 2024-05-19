@@ -152,3 +152,61 @@
     margin-right:490px;
 
   }
+
+  .text-styled_elements0
+  {
+    font-family:'Monaco';
+    font-size: 47px;
+    font-weight: normal; /* Specifică greutatea fontului (ex: bold, normal, etc.) */
+    font-style: normal; /* Specifică stilul fontului (ex: italic, normal) */
+    color:#fff;
+    margin-left: 47%;
+    font-weight:bold;
+  }
+
+  .text-styled_elements11
+  {
+    font-family:'Monaco';
+    color: #fff;
+    font-weight:bold;
+    font-size: 20px;
+
+  }
+
+
+  .text-styled_elements1
+  {
+    font-family:'Monaco';
+    color: #fff;
+
+  }
+
+  /* .form_elements
+  {
+    background-color: #0F573C;
+    padding: 20px;
+    align-self: center;
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    input{
+        /* style pt formular */
+        /* color: #000000;
+        background-color: #ffffff; /* Background color of the box */
+        /*border: 2px solid #333; /* Border around the box */
+        /*padding: 10px; /* Padding inside the box */
+        /*margin: 2px; /* Margin around the box */
+        /* border-top-left-radius: 20px; ;
+        border-top-right-radius: 20px ;
+        border-bottom-left-radius: 20px  ;
+        border-bottom-right-radius: 20px; */ */
+    /*}
+
+    border-radius: 20px;
+    margin-left: 20%;
+    margin-right: 35%;
+    /*margin-bottom: 35%;*/
+    /* margin-top: 5%;
+    margin-left:490px;
+    margin-right:490px; */
+ /* }
