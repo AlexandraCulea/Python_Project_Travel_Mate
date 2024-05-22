@@ -2,37 +2,51 @@
 <html>
 <head>
   <link href="../static/styles.css" rel = "stylesheet"/>
+  <style>
+    body{
+     
+      background-image:url("/static/img_final.jpg");
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size:cover;
+      
+      
+    }
+      
+  </style>
+  </style>
 </head>
 <body>
     <!-- <h1><strong><span id="destination" > {{destination}}</span></strong></h1> -->
-    <h1><strong><span id="destination" > {{trip.destination}}</span></strong></h1>
-    <p>Nr days: <span id="nr_days" > {{trip.nr_days}}</span></p>
-    <p>Starting date: <span id="start_date" > {{trip.start_date}}</span></p>
-    <p>Holiday type: <span id="holiday_type" > {{trip.holiday_type}}</span></p>
-    <p>Activities: <span id="activities" > {{trip.activities}}</span></p>
+    <h1 class="text-styled_elements0"><strong><span id="destination" > {{trip.destination}}</span></strong></h1>
+    <p class="text-styled_elements1">Nr days: <span id="nr_days" > {{trip.nr_days}}</span></p>
+    <p class="text-styled_elements1">Starting date: <span id="start_date" > {{trip.start_date}}</span></p>
+    <p class="text-styled_elements1">Holiday type: <span id="holiday_type" > {{trip.holiday_type}}</span></p>
+    <p class="text-styled_elements1">Activities: <span id="activities" > {{trip.activities}}</span></p>
 
 <!-- Generare text -->
-    <p>Documents and Money: </p> 
-    <pre>{{trip.documents}}</pre>
-    <p>Clothes: </p>
-        <pre>{{trip.clothes}}</pre>
-    <p>Personal Care and Health Products:</p>
-         <pre>{{trip.care}}</pre>
-    <p>Electronics and Accessories: </p>
-        <pre>{{trip.electronics}}</pre>
+    <p  class="text-styled_elements11">Documents and Money: </p> 
+    <pre class="text-styled_elements1">{{trip.documents}}</pre>
+    <p  class="text-styled_elements11">Clothes: </p>
+        <pre class="text-styled_elements1">{{trip.clothes}}</pre>
+    <p  class="text-styled_elements11">Personal Care and Health Products:</p>
+         <pre class="text-styled_elements1">{{trip.care}}</pre>
+    <p  class="text-styled_elements11">Electronics and Accessories: </p>
+        <pre class="text-styled_elements1">{{trip.electronics}}</pre>
 
-    <p>Activity </p>
-        <pre>{{trip.activity}}</pre>
+    <p  class="text-styled_elements11">Activity </p>
+        <pre class="text-styled_elements1">{{trip.activity}}</pre>
     <!-- <p>Weather: <span id="weather" > {{result_weather}}</span></p> -->
 
     <!-- poza -->
-    <h1>File Upload</h1>
+    <h1 class="text-styled_elements11">File Upload</h1>
     <form method="POST" action="/create_trip" enctype="multipart/form-data">
         <input type="hidden" name="result_documents" value="{{result_documents}}"/>
         <input type="hidden" name="trip_id" value="{{trip.id}}"/>
 
-      <p><input type="file" name="file"></p>
-      <p><input type="submit" value="Submit"></p>
+      <p class="text-styled_elements1"><input type="file" name="file"></p>
+      <p class="text-styled_elements1"><input type="submit" value="Submit"></p>
     </form>
 
 
